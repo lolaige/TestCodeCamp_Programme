@@ -1,0 +1,1309 @@
+{
+	"info": {
+		"_postman_id": "36d5c290-f3cd-4d0a-849b-ad609484621e",
+		"name": "Bundle QA Challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Parse CSV file content -Valid details",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"payload\": \"RW1wbG95ZWUgSUQsQmlsbGFibGUgUmF0ZSAocGVyIGhvdXIpLFByb2plY3QsRGF0ZSxTdGFydCBUaW1lLEVuZCBUaW1lCjEsMzAwLEdvb2dsZSwyMDE5LTA3LTAxLDA5OjAwLDE3OjAwCjIsMTAwLEZhY2Vib29rLDIwMTktMDctMDEsMTE6MDAsMTY6MDA=\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/invoice/parse",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"invoice",
+						"parse"
+					]
+				},
+				"description": "This endpoint allows you to parse the content of the CSV file encoded in Base64. The CSV file must conform to the specified format.\n\nYou can get base64 encoding of a file on the terminal:\n```bash\nbase64 /path/to/file\n```\n\nYou can also generate base64 of a file from the web using a service like https://www.browserling.com/tools/file-to-base64\n"
+			},
+			"response": [
+				{
+					"name": "Invalid Data",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"payload\": \"RW1wbG95ZWUgSUQsQmlsbGFibGUgUmF0ZSAocGVyIGhvdXIpLFByb2plY3QsRGF0ZSxTdGFydCBUaW1lLEVuZCBUaW1lCjEsMzAwLEdvb2dsZSwyMDE5LTA3LTAxLDA5OjAwLDE3OjAwCjIsMTAwLEZhY2Vib29rLDIwMTktMDctMDEsMTE6MDAsMTY6MDA=\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/invoice/parse",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"invoice",
+								"parse"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"error\": \"Something went wrong\"\n}"
+				},
+				{
+					"name": "Input parser exception",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"payload\": \"RW1wbG95ZWUgSUQsQmlsbGFibGUgUmF0ZSAocGVyIGhvdXIpLFByb2plY3QsRGF0ZSxTdGFydCBUaW1lLEVuZCBUaW1lCjEsMzAwLEdvb2dsZSwyMDE5LTA3LTAxLDA5OjAwLDE3OjAwCjIsMTAwLEZhY2Vib29rLDIwMTktMDctMDEsMTE6MDAsMTY6MDA=\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/invoice/parse",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"invoice",
+								"parse"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"error\": \"Something went wrong\"\n}"
+				},
+				{
+					"name": "Successful parsing result.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"payload\": \"RW1wbG95ZWUgSUQsQmlsbGFibGUgUmF0ZSAocGVyIGhvdXIpLFByb2plY3QsRGF0ZSxTdGFydCBUaW1lLEVuZCBUaW1lCjEsMzAwLEdvb2dsZSwyMDE5LTA3LTAxLDA5OjAwLDE3OjAwCjIsMTAwLEZhY2Vib29rLDIwMTktMDctMDEsMTE6MDAsMTY6MDA=\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/invoice/parse",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"invoice",
+								"parse"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"companies\": {\n  \"Google\": 2400,\n  \"Facebook\": 500\n },\n \"id\": \"<uuid>\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Parse CSV file content with Invalid Data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"payload\": \"RW1wbG95ZWUgSUQsQmlsbGFibGUgUmF0ZSAocGVyIGhvdXIpLFByb2plY3QsRGF0ZSxTdGFydCBUaW1lLEVuZCBUaW1lCjEsMzAwLEdvb2dsZSwyMDE5LTA3LTAxLDA5OjAwLDE3OjAwCjIsMTAwLEZhY2Vib29rLDIwMTktMDctMDEsMTE6MDAsMTY6MDA=\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/invoice/parse",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"invoice",
+						"parse"
+					]
+				},
+				"description": "This endpoint allows you to parse the content of the CSV file encoded in Base64. The CSV file must conform to the specified format.\n\nYou can get base64 encoding of a file on the terminal:\n```bash\nbase64 /path/to/file\n```\n\nYou can also generate base64 of a file from the web using a service like https://www.browserling.com/tools/file-to-base64\n"
+			},
+			"response": [
+				{
+					"name": "Invalid Data",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"payload\": \"RW1wbG95ZWUgSUQsQmlsbGFibGUgUmF0ZSAocGVyIGhvdXIpLFByb2plY3QsRGF0ZSxTdGFydCBUaW1lLEVuZCBUaW1lCjEsMzAwLEdvb2dsZSwyMDE5LTA3LTAxLDA5OjAwLDE3OjAwCjIsMTAwLEZhY2Vib29rLDIwMTktMDctMDEsMTE6MDAsMTY6MDA=\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/invoice/parse",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"invoice",
+								"parse"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"error\": \"Something went wrong\"\n}"
+				},
+				{
+					"name": "Input parser exception",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"payload\": \"RW1wbG95ZWUgSUQsQmlsbGFibGUgUmF0ZSAocGVyIGhvdXIpLFByb2plY3QsRGF0ZSxTdGFydCBUaW1lLEVuZCBUaW1lCjEsMzAwLEdvb2dsZSwyMDE5LTA3LTAxLDA5OjAwLDE3OjAwCjIsMTAwLEZhY2Vib29rLDIwMTktMDctMDEsMTE6MDAsMTY6MDA=\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/invoice/parse",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"invoice",
+								"parse"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"error\": \"Something went wrong\"\n}"
+				},
+				{
+					"name": "Successful parsing result.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"payload\": \"RW1wbG95ZWUgSUQsQmlsbGFibGUgUmF0ZSAocGVyIGhvdXIpLFByb2plY3QsRGF0ZSxTdGFydCBUaW1lLEVuZCBUaW1lCjEsMzAwLEdvb2dsZSwyMDE5LTA3LTAxLDA5OjAwLDE3OjAwCjIsMTAwLEZhY2Vib29rLDIwMTktMDctMDEsMTE6MDAsMTY6MDA=\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/invoice/parse",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"invoice",
+								"parse"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"companies\": {\n  \"Google\": 2400,\n  \"Facebook\": 500\n },\n \"id\": \"<uuid>\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Parse CSV file content without Body",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"payload\": \"RW1wbG95ZWUgSUQsQmlsbGFibGUgUmF0ZSAocGVyIGhvdXIpLFByb2plY3QsRGF0ZSxTdGFydCBUaW1lLEVuZCBUaW1lCjEsMzAwLEdvb2dsZSwyMDE5LTA3LTAxLDA5OjAwLDE3OjAwCjIsMTAwLEZhY2Vib29rLDIwMTktMDctMDEsMTE6MDAsMTY6MDA=\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/invoice/parse",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"invoice",
+						"parse"
+					]
+				},
+				"description": "This endpoint allows you to parse the content of the CSV file encoded in Base64. The CSV file must conform to the specified format.\n\nYou can get base64 encoding of a file on the terminal:\n```bash\nbase64 /path/to/file\n```\n\nYou can also generate base64 of a file from the web using a service like https://www.browserling.com/tools/file-to-base64\n"
+			},
+			"response": [
+				{
+					"name": "Invalid Data",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"payload\": \"RW1wbG95ZWUgSUQsQmlsbGFibGUgUmF0ZSAocGVyIGhvdXIpLFByb2plY3QsRGF0ZSxTdGFydCBUaW1lLEVuZCBUaW1lCjEsMzAwLEdvb2dsZSwyMDE5LTA3LTAxLDA5OjAwLDE3OjAwCjIsMTAwLEZhY2Vib29rLDIwMTktMDctMDEsMTE6MDAsMTY6MDA=\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/invoice/parse",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"invoice",
+								"parse"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"error\": \"Something went wrong\"\n}"
+				},
+				{
+					"name": "Input parser exception",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"payload\": \"RW1wbG95ZWUgSUQsQmlsbGFibGUgUmF0ZSAocGVyIGhvdXIpLFByb2plY3QsRGF0ZSxTdGFydCBUaW1lLEVuZCBUaW1lCjEsMzAwLEdvb2dsZSwyMDE5LTA3LTAxLDA5OjAwLDE3OjAwCjIsMTAwLEZhY2Vib29rLDIwMTktMDctMDEsMTE6MDAsMTY6MDA=\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/invoice/parse",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"invoice",
+								"parse"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"error\": \"Something went wrong\"\n}"
+				},
+				{
+					"name": "Successful parsing result.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"payload\": \"RW1wbG95ZWUgSUQsQmlsbGFibGUgUmF0ZSAocGVyIGhvdXIpLFByb2plY3QsRGF0ZSxTdGFydCBUaW1lLEVuZCBUaW1lCjEsMzAwLEdvb2dsZSwyMDE5LTA3LTAxLDA5OjAwLDE3OjAwCjIsMTAwLEZhY2Vib29rLDIwMTktMDctMDEsMTE6MDAsMTY6MDA=\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/invoice/parse",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"invoice",
+								"parse"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"companies\": {\n  \"Google\": 2400,\n  \"Facebook\": 500\n },\n \"id\": \"<uuid>\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Invoice Parsing Result by ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/invoice/{{invoice_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"invoice",
+						"{{invoice_id}}"
+					]
+				},
+				"description": "Get the Parse Result for a previously parsed CSV invoice by specified ID. In general, this endpoint will ALWAYS return success irrespective of the ID specified.\nWhen a result with the specified ID is not found, the companies will be an empty map.\n"
+			},
+			"response": [
+				{
+					"name": "OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/invoice/:invoiceId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"invoice",
+								":invoiceId"
+							],
+							"variable": [
+								{
+									"key": "invoiceId"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"companies\": {\n  \"Google\": 2400,\n  \"Facebook\": 500\n },\n \"id\": \"<uuid>\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Invoice Parsing Result by ID (Wrong Method)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/invoice/{{invoice_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"invoice",
+						"{{invoice_id}}"
+					]
+				},
+				"description": "Get the Parse Result for a previously parsed CSV invoice by specified ID. In general, this endpoint will ALWAYS return success irrespective of the ID specified.\nWhen a result with the specified ID is not found, the companies will be an empty map.\n"
+			},
+			"response": [
+				{
+					"name": "OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/invoice/:invoiceId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"invoice",
+								":invoiceId"
+							],
+							"variable": [
+								{
+									"key": "invoiceId"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"companies\": {\n  \"Google\": 2400,\n  \"Facebook\": 500\n },\n \"id\": \"<uuid>\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Invoice Parsing Result by ID (Null invoice iD)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/invoice/{{invoice_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"invoice",
+						"{{invoice_id}}"
+					]
+				},
+				"description": "Get the Parse Result for a previously parsed CSV invoice by specified ID. In general, this endpoint will ALWAYS return success irrespective of the ID specified.\nWhen a result with the specified ID is not found, the companies will be an empty map.\n"
+			},
+			"response": [
+				{
+					"name": "OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/invoice/:invoiceId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"invoice",
+								":invoiceId"
+							],
+							"variable": [
+								{
+									"key": "invoiceId"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"companies\": {\n  \"Google\": 2400,\n  \"Facebook\": 500\n },\n \"id\": \"<uuid>\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Invoice Parsing Result by ID (Invalid ID)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/invoice/{{invoice_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"invoice",
+						"{{invoice_id}}"
+					]
+				},
+				"description": "Get the Parse Result for a previously parsed CSV invoice by specified ID. In general, this endpoint will ALWAYS return success irrespective of the ID specified.\nWhen a result with the specified ID is not found, the companies will be an empty map.\n"
+			},
+			"response": [
+				{
+					"name": "OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/invoice/:invoiceId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"invoice",
+								":invoiceId"
+							],
+							"variable": [
+								{
+									"key": "invoiceId"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"companies\": {\n  \"Google\": 2400,\n  \"Facebook\": 500\n },\n \"id\": \"<uuid>\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Company details from an Invoice",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/invoice/{{invoice_id}}/company?companyName=Google",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"invoice",
+						"{{invoice_id}}",
+						"company"
+					],
+					"query": [
+						{
+							"key": "companyName",
+							"value": "Google",
+							"description": "(Required) companyName"
+						}
+					]
+				},
+				"description": "Get the breakdown of the employees, rates and amounts billed by a company in an Invoice result using the ID.\nThis endpoint allows you to \"drill-down\" into the total amount charged by a company for a given invoice parsed.\n"
+			},
+			"response": [
+				{
+					"name": "Company name not specified",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/invoice/:invoiceId/company?companyName=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"invoice",
+								":invoiceId",
+								"company"
+							],
+							"query": [
+								{
+									"key": "companyName",
+									"value": "<string>"
+								}
+							],
+							"variable": [
+								{
+									"key": "invoiceId"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "*/*"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Company Invoice",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/invoice/:invoiceId/company?companyName=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"invoice",
+								":invoiceId",
+								"company"
+							],
+							"query": [
+								{
+									"key": "companyName",
+									"value": "<string>"
+								}
+							],
+							"variable": [
+								{
+									"key": "invoiceId"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "*/*"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Company or Invoice not found",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/invoice/:invoiceId/company?companyName=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"invoice",
+								":invoiceId",
+								"company"
+							],
+							"query": [
+								{
+									"key": "companyName",
+									"value": "<string>"
+								}
+							],
+							"variable": [
+								{
+									"key": "invoiceId"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "*/*"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Get Company details from an Invoice (With empty invoice ID)y",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/invoice/{{invoice_id}}/company?companyName=Google",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"invoice",
+						"{{invoice_id}}",
+						"company"
+					],
+					"query": [
+						{
+							"key": "companyName",
+							"value": "Google",
+							"description": "(Required) companyName"
+						}
+					]
+				},
+				"description": "Get the breakdown of the employees, rates and amounts billed by a company in an Invoice result using the ID.\nThis endpoint allows you to \"drill-down\" into the total amount charged by a company for a given invoice parsed.\n"
+			},
+			"response": [
+				{
+					"name": "Company name not specified",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/invoice/:invoiceId/company?companyName=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"invoice",
+								":invoiceId",
+								"company"
+							],
+							"query": [
+								{
+									"key": "companyName",
+									"value": "<string>"
+								}
+							],
+							"variable": [
+								{
+									"key": "invoiceId"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "*/*"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Company Invoice",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/invoice/:invoiceId/company?companyName=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"invoice",
+								":invoiceId",
+								"company"
+							],
+							"query": [
+								{
+									"key": "companyName",
+									"value": "<string>"
+								}
+							],
+							"variable": [
+								{
+									"key": "invoiceId"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "*/*"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Company or Invoice not found",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/invoice/:invoiceId/company?companyName=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"invoice",
+								":invoiceId",
+								"company"
+							],
+							"query": [
+								{
+									"key": "companyName",
+									"value": "<string>"
+								}
+							],
+							"variable": [
+								{
+									"key": "invoiceId"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "*/*"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Get Company details from an Invoice (Invalid Invoice ID)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/invoice/{{invoice_id}}/company?companyName=Google",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"invoice",
+						"{{invoice_id}}",
+						"company"
+					],
+					"query": [
+						{
+							"key": "companyName",
+							"value": "Google",
+							"description": "(Required) companyName"
+						}
+					]
+				},
+				"description": "Get the breakdown of the employees, rates and amounts billed by a company in an Invoice result using the ID.\nThis endpoint allows you to \"drill-down\" into the total amount charged by a company for a given invoice parsed.\n"
+			},
+			"response": [
+				{
+					"name": "Company name not specified",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/invoice/:invoiceId/company?companyName=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"invoice",
+								":invoiceId",
+								"company"
+							],
+							"query": [
+								{
+									"key": "companyName",
+									"value": "<string>"
+								}
+							],
+							"variable": [
+								{
+									"key": "invoiceId"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "*/*"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Company Invoice",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/invoice/:invoiceId/company?companyName=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"invoice",
+								":invoiceId",
+								"company"
+							],
+							"query": [
+								{
+									"key": "companyName",
+									"value": "<string>"
+								}
+							],
+							"variable": [
+								{
+									"key": "invoiceId"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "*/*"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Company or Invoice not found",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/invoice/:invoiceId/company?companyName=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"invoice",
+								":invoiceId",
+								"company"
+							],
+							"query": [
+								{
+									"key": "companyName",
+									"value": "<string>"
+								}
+							],
+							"variable": [
+								{
+									"key": "invoiceId"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "*/*"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Get Company details from an Invoice (Invalid Company name))",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/invoice/{{invoice_id}}/company?companyName=Google",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"invoice",
+						"{{invoice_id}}",
+						"company"
+					],
+					"query": [
+						{
+							"key": "companyName",
+							"value": "Google",
+							"description": "(Required) companyName"
+						}
+					]
+				},
+				"description": "Get the breakdown of the employees, rates and amounts billed by a company in an Invoice result using the ID.\nThis endpoint allows you to \"drill-down\" into the total amount charged by a company for a given invoice parsed.\n"
+			},
+			"response": [
+				{
+					"name": "Company name not specified",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/invoice/:invoiceId/company?companyName=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"invoice",
+								":invoiceId",
+								"company"
+							],
+							"query": [
+								{
+									"key": "companyName",
+									"value": "<string>"
+								}
+							],
+							"variable": [
+								{
+									"key": "invoiceId"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "*/*"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Company Invoice",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/invoice/:invoiceId/company?companyName=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"invoice",
+								":invoiceId",
+								"company"
+							],
+							"query": [
+								{
+									"key": "companyName",
+									"value": "<string>"
+								}
+							],
+							"variable": [
+								{
+									"key": "invoiceId"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "*/*"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Company or Invoice not found",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/invoice/:invoiceId/company?companyName=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"invoice",
+								":invoiceId",
+								"company"
+							],
+							"query": [
+								{
+									"key": "companyName",
+									"value": "<string>"
+								}
+							],
+							"variable": [
+								{
+									"key": "invoiceId"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "*/*"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		}
+	]
+}
